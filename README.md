@@ -10,4 +10,4 @@ This program scrapes and stores data from websites into a db. It's a minimal ver
 - SQLite
 
 ## Project Status
-🚧 In progress — foundation and setup completed.
+In progress
