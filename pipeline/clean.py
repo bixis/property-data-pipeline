@@ -2,7 +2,9 @@ import re # REGEX module
 from config import logger
 
 def clean_price(price: str) -> float:
-    """Cleans and converts a price string to a float."""
+    """
+    Cleans and converts a price string to a float.
+    """
     if not price:
         logger.debug("Price is missing or has no valid identity")
         return None

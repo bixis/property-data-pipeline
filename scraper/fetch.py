@@ -31,6 +31,4 @@ def fetch_page(url: str, retries: int=3) -> str:
             logger.error(f"Error fetching URL {url}: {e}")
             raise
             time.sleep(2)
-            
-
-    
+        
