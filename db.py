@@ -34,6 +34,7 @@ def insert_properties(properties):
     Inserts a list of property dictionaries into the database.
     """
     inserted = 0
+    duplicates = 0
     failed = 0
     with get_db_connection() as conn:
         cursor = conn.cursor()
@@ -47,8 +48,17 @@ def insert_properties(properties):
                     (item['title'], item['price'], item['location'])
                 )
                 inserted += 1
+                
+            except sqlite3.IntegrityError:
+                logger.info(
+                    "Duplicate skipped: %s (%s)",
+                    item["title"],
+                    item["location"]
+                )
+                duplicates += 1
+                    
             except sqlite3.Error as e:
                 logger.error(f"Error inserting item {item}: {e}")
                 failed += 1
         conn.commit()
-    logger.info(f"Inserted {inserted} items, {failed} failed.")
+    logger.info(f"Inserted {inserted} items, {duplicates} duplicates, {failed} failed.")

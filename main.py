@@ -8,9 +8,10 @@ from pipeline.clean import normalize_listings
 def main():
     logger.info("Application started - RE (Real Estate) Data Pipeline Started")
     raw_listings = [
-        {"title": "Apartment Centro", "price": "$120.000", "location": "Montevideo"},
-        {"title": "House Colonia", "price": None, "location": "Colonia"},
-    ]
+    {"title": "Apartment Centro", "price": "$120.000", "location": "Montevideo"},
+    {"title": "Apartment Centro", "price": "$125.000", "location": "Montevideo"},
+    {"title": "House Colonia", "price": None, "location": "Colonia"},
+]
 
     normalized = normalize_listings(raw_listings)
     initialize_db()
