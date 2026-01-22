@@ -1,6 +1,6 @@
 import os
 import pytest
-from Scraper.db import initialize_db, insert_properties, get_db_connection
+from db import initialize_db, insert_properties, get_db_connection
 
 TEST_DB = "test_properties.db"
 
