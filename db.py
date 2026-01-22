@@ -3,18 +3,17 @@ from config import logger
 
 DB_NAME="properties.db"
 
-def get_db_connection():
-    return sqlite3.connect(DB_NAME)
-    
-    
-def initialize_db():
+def get_db_connection(db_name: str=DB_NAME):
+    return sqlite3.connect(db_name)
+
+def initialize_db(db_name: str=DB_NAME):
     """
     Initializes the database with the required tables.
     """
     logger.info("Initializing Database")
-    
-    with get_db_connection() as conn:
-        
+
+    with get_db_connection(db_name=DB_NAME) as conn:
+
         conn.execute("DROP TABLE IF EXISTS listings")
         
         conn.execute("""
@@ -28,8 +27,7 @@ def initialize_db():
         """)
         conn.commit()
         
-        
-def insert_properties(properties):        
+def insert_properties(properties, db_name: str=DB_NAME):        
     """
     Inserts a list of property dictionaries into the database.
     """
