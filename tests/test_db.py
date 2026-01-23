@@ -35,9 +35,10 @@ def test_deduplication():
     assert stats['failed'] == 0
     
     # Assert database state
-    with get_db_connection(db_name=TEST_DB) as conn:
+    with get_db_connection(TEST_DB) as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM listings")
         count = cursor.fetchone()[0]
         assert count == 2  # Only two unique entries should be present
+        print()
         

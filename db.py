@@ -12,7 +12,7 @@ def initialize_db(db_name: str=DB_NAME):
     """
     logger.info("Initializing Database")
 
-    with get_db_connection(db_name=DB_NAME) as conn:
+    with get_db_connection(db_name=db_name) as conn:
 
         conn.execute("DROP TABLE IF EXISTS listings")
         
@@ -34,7 +34,7 @@ def insert_properties(properties, db_name: str=DB_NAME):
     inserted = 0
     duplicates = 0
     failed = 0
-    with get_db_connection() as conn:
+    with get_db_connection(db_name=db_name) as conn:
         cursor = conn.cursor()
         for item in properties:
             try:
@@ -60,3 +60,4 @@ def insert_properties(properties, db_name: str=DB_NAME):
                 failed += 1
         conn.commit()
     logger.info(f"Inserted {inserted} items, {duplicates} duplicates, {failed} failed.")
+    return {'inserted': inserted, 'duplicates': duplicates, 'failed': failed}
