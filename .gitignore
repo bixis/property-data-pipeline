@@ -3,3 +3,6 @@ __pycache__
 properties.db
 logs/
 exports/
+
+# Local environment variables
+.env
