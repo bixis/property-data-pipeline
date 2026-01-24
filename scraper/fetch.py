@@ -3,6 +3,7 @@ import os
 import time
 import requests
 from config import logger
+from bs4 import BeautifulSoup
 
 load_dotenv()
 
@@ -48,7 +49,7 @@ def fetch_properties_for_sale():
     html = fetch_page(url)
     soup = BeautifulSoup(html, 'html.parser')
     properties = []
-    
+    # I would need to parse all of this... 
     return properties
 
 fetch_properties_for_sale()
