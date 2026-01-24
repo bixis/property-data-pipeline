@@ -1,6 +1,10 @@
+from dotenv import load_dotenv
+import os
 import time
 import requests
 from config import logger
+
+load_dotenv()
 
 DEFAULT_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; PropertyDataPipeline/1.0)"
@@ -31,4 +35,20 @@ def fetch_page(url: str, retries: int=3) -> str:
             logger.error(f"Error fetching URL {url}: {e}")
             raise
             time.sleep(2)
-        
+
+
+def fetch_properties_for_sale():
+    """
+    Fetches property listings for sale from a predefined URL.
+    
+    Returns:
+        str: The HTML content of the property listings page.
+    """
+    url = os.getenv("FOR_SALE_URL")   
+    html = fetch_page(url)
+    soup = BeautifulSoup(html, 'html.parser')
+    properties = []
+    
+    return properties
+
+fetch_properties_for_sale()
