@@ -20,6 +20,16 @@ def teardown_function():
     if os.path.exists(TEST_DB):
         os.remove(TEST_DB)
         
+def test_insert_multiple_uniques():
+    ...
+    
+def test_price_formatting():
+    ...
+    
+def test_insert_empty_list():
+    ...
+            
+        
 def test_deduplication():
     test_data = [
         {"title": "Apartment A", "price": 1200.0, "location": "City X"},
