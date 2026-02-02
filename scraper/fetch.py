@@ -49,7 +49,12 @@ def fetch_properties_for_sale():
     html = fetch_page(url)
     soup = BeautifulSoup(html, 'html.parser')
     properties = []
-    # I would need to parse all of this... 
+    # I would need to parse all of this...
+    # After looking a bit through the HTML structure, each property is
+    # in a div with class "rh_prop_card rh_prop_card--listing" from each
+    # card I'll be extracting the title, price and location
+    
+
     return properties
 
 fetch_properties_for_sale()
